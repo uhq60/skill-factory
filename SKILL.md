@@ -1,6 +1,6 @@
 ---
 name: skill-factory
-description: Concevoir, structurer, tester et préparer l'installation de skills personnels robustes en orchestrant le skill officiel skill-creator. Utiliser lorsque l'utilisateur demande une fabrique de skills, la création complète d'un skill avec cahier des charges et tests, l'audit ou l'amélioration méthodique d'un skill, une matrice de déclenchement et de non-déclenchement, ou un rapport qualité avant installation. Ne pas utiliser pour une simple question générale sur les skills ni pour une installation directe sans travail de conception.
+description: Concevoir, structurer, tester, maintenir et préparer l'installation de skills personnels robustes en orchestrant le skill officiel skill-creator. Utiliser lorsque l'utilisateur demande une fabrique de skills, la création complète d'un skill avec cahier des charges et tests, l'audit ou l'amélioration continue d'un skill, une matrice de déclenchement, un benchmark multi-tâches, une analyse d'erreurs récurrentes ou un rapport qualité avant installation. Ne pas utiliser pour une simple question générale sur les skills ni pour une installation directe sans travail de conception.
 ---
 
 # Skill Factory
@@ -126,7 +126,29 @@ python3 scripts/compare_skills.py /chemin/ancienne /chemin/candidate \
 
 Examiner les fichiers ajoutés, supprimés et modifiés ainsi que l'évolution du score. Une hausse du score ne compense pas une régression fonctionnelle.
 
-### 7. Installer ou remettre le résultat
+### 7. Organiser l'amélioration continue
+
+Lire [v3-continuous-improvement.md](references/v3-continuous-improvement.md) et utiliser [pattern-catalog.json](references/pattern-catalog.json) pour les créations ou refontes importantes.
+
+Exécuter la boucle V3 dans cet ordre :
+
+1. Sélectionner un patron à partir du brief.
+2. Mesurer les performances sur plusieurs tâches réelles.
+3. Agréger les erreurs récurrentes sans conserver de données sensibles.
+4. Produire des recommandations priorisées et vérifiables.
+5. Contrôler l'échéance de la prochaine maintenance.
+
+```bash
+python3 scripts/select_pattern.py brief.json
+python3 scripts/benchmark_skill.py benchmark-results.json --output benchmark-report.json
+python3 scripts/analyze_failures.py benchmark-results.json --output failure-report.json
+python3 scripts/recommend_improvements.py audit-report.json benchmark-report.json failure-report.json
+python3 scripts/maintenance_check.py maintenance-state.json --interval-days 30
+```
+
+Conserver les rapports et l'historique de maintenance en dehors du dossier installable du skill évalué. Ne jamais capitaliser les requêtes brutes, secrets ou données personnelles dans l'historique des erreurs.
+
+### 8. Installer ou remettre le résultat
 
 Si la demande autorise la création ou la mise à jour, suivre `skill-creator` jusqu'à l'installation et à sa vérification complète. Ne jamais annoncer qu'un skill est installé avant cette vérification.
 
