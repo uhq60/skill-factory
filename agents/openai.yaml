@@ -1,0 +1,4 @@
+interface:
+  display_name: "Skill Factory"
+  short_description: "Créer et éprouver des skills fiables"
+  default_prompt: "Utilise $skill-factory pour concevoir, tester et préparer un nouveau skill de bout en bout."
