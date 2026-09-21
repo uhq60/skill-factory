@@ -1,0 +1,61 @@
+{
+  "schema_version": 1,
+  "patterns": [
+    {
+      "id": "procedural-knowledge",
+      "title": "Connaissance procédurale",
+      "signals": ["règlement", "politique", "procédure", "conformité", "versionné", "sourcé"],
+      "resources": ["references"],
+      "required_tests": ["règle explicite", "règle absente", "contradiction", "version applicable"],
+      "risks": ["hallucination de règle", "source obsolète"]
+    },
+    {
+      "id": "deterministic-transform",
+      "title": "Transformation déterministe",
+      "signals": ["convertir", "transformer", "valider", "csv", "json", "fichier", "calcul"],
+      "resources": ["scripts"],
+      "required_tests": ["entrée valide", "entrée invalide", "sortie reproductible", "original préservé"],
+      "risks": ["corruption de fichier", "perte de données"]
+    },
+    {
+      "id": "brand-constrained-creative",
+      "title": "Création sous contraintes de marque",
+      "signals": ["marque", "logo", "identité visuelle", "charte", "design", "asset", "template"],
+      "resources": ["references", "assets"],
+      "required_tests": ["asset verrouillé", "palette", "proportions", "contrôle visuel"],
+      "risks": ["régénération du logo", "dérive visuelle"]
+    },
+    {
+      "id": "current-research",
+      "title": "Recherche à données évolutives",
+      "signals": ["actualité", "prix", "marché", "recherche", "sources", "récent", "veille"],
+      "resources": ["references"],
+      "required_tests": ["source primaire", "date", "désaccord des sources", "information absente"],
+      "risks": ["information périmée", "source secondaire fragile"]
+    },
+    {
+      "id": "external-system-operator",
+      "title": "Opérateur de système externe",
+      "signals": ["api", "connecteur", "envoyer", "publier", "modifier", "déployer", "compte"],
+      "resources": ["references", "scripts"],
+      "required_tests": ["lecture seule", "confirmation", "permission refusée", "reprise après erreur"],
+      "risks": ["action irréversible", "mauvais destinataire", "permission excessive"]
+    },
+    {
+      "id": "multi-artifact-project",
+      "title": "Projet multi-livrables",
+      "signals": ["projet", "plusieurs fichiers", "rapport", "présentation", "tableur", "pipeline", "workflow"],
+      "resources": ["references", "scripts", "assets"],
+      "required_tests": ["cohérence inter-fichiers", "ordre des étapes", "reprise", "livrables complets"],
+      "risks": ["état incohérent", "livrable manquant"]
+    },
+    {
+      "id": "general-workflow",
+      "title": "Workflow général",
+      "signals": [],
+      "resources": [],
+      "required_tests": ["cas nominal", "cas ambigu", "erreur", "non-déclenchement"],
+      "risks": ["périmètre trop large"]
+    }
+  ]
+}
